@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="app.css">
+    <title>Game_JS</title>
+</head>
+<body>
+    <canvas id="canvas_game" width="800" height="800">
+        Seu navegador não suporta o Canvas...
+    </canvas>
+
+    <!-- Variável do contexto 2d do canvas: -->
+    <script>
+        const canvas = document.getElementById('canvas_game')
+        const context = canvas.getContext('2d')
+    </script>
+
+    <!-- Scripts das classes do jogo: -->
+     <script src="init.js"></script>
+    <script src="player.js"></script>
+
+    <script>
+        // const color = prompt('Digite a cor da bola (em hexa ou nome css): ')
+        // const bordercolor = prompt('Digite a cor da borda da bola (em hexa-decimal ou nome css): ')
+        // alert('Se as cores digitadas não forem válidas a bola irá se colorir de preto!')
+
+        const player = new Player(context)
+        player.init()
+    </script>
+</body>
+</html>
