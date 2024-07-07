@@ -2,7 +2,7 @@ class Player {
     constructor(ctx, color='black', bordercolor='black') {
         this.context = ctx
         this.x = 400
-        this.y = 600
+        this.y = 400
         this.velo = 5
         this.movep = { left: false, right: false, up: false, down: false }
         this.size = 15
@@ -26,10 +26,10 @@ class Player {
     }
 
     collision() {
-        if (this.x + this.size <= 0) this.x += this.size
+        if (this.x + this.size <= 30) this.x = this.size
         if (this.x + this.size >= canvas.width) this.x = canvas.width - this.size
 
-        if (this.y + this.size <= 0) this.y += this.size
+        if (this.y + this.size <= 30) this.y = this.size
         if (this.y + this.size >= canvas.height) this.y = canvas.height - this.size
     }
 
