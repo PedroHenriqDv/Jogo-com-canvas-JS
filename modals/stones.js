@@ -27,6 +27,7 @@ class Stone {
         this.image.src = 'img/images.jpg'
     }
 
+    // inicializador da classe Stone
     init() {
         const _this = this
         function animate() {
@@ -36,6 +37,7 @@ class Stone {
         requestAnimationFrame(animate)
     }
 
+    // método que sorteia a dois número int que servira de posição X e Y das pedras
     randomInt() {
         while (true) {
             let random = Math.random()
@@ -48,6 +50,7 @@ class Stone {
         }
     }
 
+    // sorteia e atualiza a posição de cada pedra na tela
     updatePosition() {
         for (let up of this.stonesXY) {
             let updatePosition = this.randomInt()
@@ -56,14 +59,19 @@ class Stone {
         }
     }
 
+    // método que desenha as pedras
     draw() {
         const ctx = this.ctx
-        let cont = 0
-        for (let i of this.stonesXY) {
-            if (this.stones[cont].stay) {
-                ctx.drawImage(this.image, i.positionX, i.positionY, this.size, this.size)
+        for (let i = 0;i < this.stones.length; i++) {
+            if (this.stones[i]) {
+                // desenha as pedras que não foram pegas
+                ctx.drawImage(this.image, this.stonesXY[i].positionX, this.stonesXY[i].positionY, this.size, this.size)
+            } else {
+                // desenha as pedras que ja foram pegas fora do alcance de visão
+                this.stonesXY[i].positionX = -10
+                this.stonesXY[i].positionY = -10
+                ctx.drawImage(this.image, -10, -10, 10, 10)
             }
-            cont += 1
         }
     }
 }

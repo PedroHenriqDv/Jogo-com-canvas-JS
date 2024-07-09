@@ -1,5 +1,4 @@
 // init game
-
 class InitGame {
     constructor(player, stones, game) {
         this.player = player
@@ -7,6 +6,7 @@ class InitGame {
         this.game = game
     }
 
+    // inicializa o jogo
     initAll() {
         this.player.init()
         this.stone.init()

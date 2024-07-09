@@ -10,6 +10,7 @@ class Player {
         this.bordercolor = bordercolor
     }
 
+    // inicializador das animações e funcionamento das interatividades do player
     init() {
         const _this = this
         function animate() {
@@ -20,11 +21,13 @@ class Player {
         requestAnimationFrame(animate)
     }
 
+    // atualiza a posição do player na tela
     update() {
         this.move()
         this.collision()
     }
 
+    // identifica o limite da tela
     collision() {
         if (this.x + this.size <= this.size*2) this.x = this.size
         if (this.x + this.size >= canvas.width) this.x = canvas.width - this.size
@@ -33,11 +36,13 @@ class Player {
         if (this.y + this.size >= canvas.height) this.y = canvas.height - this.size
     }
 
+    // chama os métodos de movimento do player
     move() {
         this.keypress()
         this.moving()
     }
 
+    // muda a posição do player segundo o input do player
     moving() {
         if (this.movep.up) this.y -= this.velo
         if (this.movep.left) this.x -= this.velo
@@ -45,6 +50,7 @@ class Player {
         if (this.movep.right) this.x += this.velo
     }
 
+    // identifica o input do teclado do player para a movimentação
     keypress() {
         document.addEventListener('keydown', down => {
             const keydown = down.key.toLowerCase()
@@ -63,6 +69,7 @@ class Player {
         })
     }
 
+    // desenha o player
     draw() {
         const ctx = this.context
         ctx.clearRect(0, 0, canvas.width, canvas.height)

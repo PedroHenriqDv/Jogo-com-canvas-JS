@@ -1,52 +1,60 @@
 class Game {
     constructor(stones, player) {
-        this.poits = 0
+        this.points = 0
         this.stones = stones
         this.player = player
     }
 
+    // inicializa os métodos de lógica do jogo
     init() {
         const _this = this
         function logic() {
             _this.pointPlayer()
+            if (_this.checking()) {
+                _this.stones.updatePosition()
+                _this.resetStay()
+            }
             _this.init()
         }
         requestAnimationFrame(logic)
     }
 
+    // identifica a colisão do player com as pedras
     pointPlayer() {
         const ballx = this.player.x
         const bally = this.player.y
         const sizeStone = this.stones.size
-        let cont = 0
-        for (let stone of this.stones.stonesXY) {
+        for (let l = 0;l < this.stones.stones.length; l++) {
+            let stoneX = Number(this.stones.stonesXY[l].positionX)
+            let stoneY = Number(this.stones.stonesXY[l].positionY)
             // x collision
-            if (ballx >= stone.positionX && ballx <= Number(stone.positionX) + sizeStone) {
-                // y collision
-                if (bally >= stone.positionY && bally <= Number(stone.positionY) + sizeStone) {
+            if (ballx >= stoneX && ballx <= stoneX + sizeStone) {
+                 // y collision
+                if (bally >= stoneY && bally <= stoneY + sizeStone) {
+                    this.stones.stones[l] = false
                     // reward of the player
-                    this.stones.stones[cont] = false
-                    this.checking()
+                    console.log('point')
+                    const audio = new Audio('sons/light-switch-156813.mp3').play()
                 }
             }
-            cont += 1
         }
     }
 
+    // checa se todas as pedras foram coletadas
     checking() {
-        let cont = 0
         for (let stay of this.stones.stones) {
-            if (!stay) cont += 1
-            if (cont == this.stones.stones.length) {
-                this.resetStay()
+            if (stay) {
+                return false
             }
         }
+        return true
     }
 
+    // reseta todas as pedras no sistema de draw (desenho)
     resetStay() {
         for (let i in this.stones.stones) {
+            console.log(i)
             this.stones.stones[i] = true
-            this.stones.updatePosition()
         }
     }
 }
