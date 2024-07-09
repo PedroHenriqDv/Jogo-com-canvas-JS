@@ -45,10 +45,8 @@ class Game {
 
     resetStay() {
         for (let i in this.stones.stones) {
-            let newPosition = this.stones.randomInt()
             this.stones.stones[i] = true
-            this.stones.stonesXY[i][0] = newPosition[0]
-            this.stones.stonesXY[i][1] = newPosition[1]
+            this.stones.updatePosition()
         }
     }
 }
