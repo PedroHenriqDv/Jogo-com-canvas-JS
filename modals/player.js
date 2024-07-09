@@ -26,10 +26,10 @@ class Player {
     }
 
     collision() {
-        if (this.x + this.size <= 30) this.x = this.size
+        if (this.x + this.size <= this.size*2) this.x = this.size
         if (this.x + this.size >= canvas.width) this.x = canvas.width - this.size
 
-        if (this.y + this.size <= 30) this.y = this.size
+        if (this.y + this.size <= this.size*2) this.y = this.size
         if (this.y + this.size >= canvas.height) this.y = canvas.height - this.size
     }
 

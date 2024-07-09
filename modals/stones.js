@@ -1,15 +1,16 @@
 class Stone {
-    constructor(context, amount) {
+    constructor(context) {
         this.ctx = context
         this.size = 50
-        this.amount = amount
         this.stones =
             [
                 { stay: true }, { stay: true }, { stay: true }
             ]
         this.stonesXY =
             [
-                { positionX: this.randomInt()[0], positionY: this.randomInt()[1] },
+                { 
+                    positionX: this.randomInt()[0], positionY: this.randomInt()[1] 
+                },
 
                 {
                     positionX: this.randomInt()[0],

@@ -18,17 +18,17 @@
     </script>
 
     <!-- Scripts das classes do jogo: -->
-     <script src="game.js"></script>
-    <script src="player.js"></script>
-    <script src="stones.js"></script>
-    <script src="index.js"></script>
+     <script src="modals/game.js"></script>
+    <script src="modals/player.js"></script>
+    <script src="modals/stones.js"></script>
+    <script src="modals/index.js"></script>
 
     <script>
         // const color = prompt('Digite a cor da bola (em hexa ou nome css): ')
         // const bordercolor = prompt('Digite a cor da borda da bola (em hexa-decimal ou nome css): ')
         // alert('Se as cores digitadas não forem válidas a bola irá se colorir de preto!')
 
-        const stones = new Stone(context, 3)
+        const stones = new Stone(context)
         const player = new Player(context)
         const game = new Game(stones, player)
         const init = new InitGame(player, stones, game)
