@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="app.css">
-    <title>Farm_stone</title>
+    <title>Stone eater</title>
 </head>
 <body>
     <canvas id="canvas_game" width="800" height="800">
@@ -18,19 +18,22 @@
     </script>
 
     <!-- Scripts das classes do jogo: -->
+     <script src="game.js"></script>
     <script src="player.js"></script>
     <script src="stones.js"></script>
+    <script src="index.js"></script>
 
     <script>
         // const color = prompt('Digite a cor da bola (em hexa ou nome css): ')
         // const bordercolor = prompt('Digite a cor da borda da bola (em hexa-decimal ou nome css): ')
         // alert('Se as cores digitadas não forem válidas a bola irá se colorir de preto!')
 
+        const stones = new Stone(context, 3)
         const player = new Player(context)
-        player.init()
+        const game = new Game(stones, player)
+        const init = new InitGame(player, stones, game)
 
-        const stones = new Stone(context, player)
-        stones.init()
+        init.initAll()
     </script>
 </body>
 </html>
